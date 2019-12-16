@@ -1,0 +1,20 @@
+header{
+    background-color : #e1dcbe;    
+    font-family: 'Lakki Reddy';
+}
+body{
+    background-image: url('../img/body.jpeg');   
+}
+table{
+    width: 80%;
+    height: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    border-collapse: collapse;
+    text-align: center;
+}
+.case {
+    border: 1px solid black; 
+    text-align: center;
+}
+
