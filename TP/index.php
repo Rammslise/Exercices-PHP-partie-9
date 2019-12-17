@@ -1,6 +1,11 @@
 <?php
 $month = date('m');
 $year = date('Y');
+if (isset($_POST['monthList']) && isset($_POST['yearList'])) {
+    $month = $_POST['monthList'];
+    $year = $_POST['yearList'];
+}
+$arrayMonths = array('', 'Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre');
 ?>
 <!DOCTYPE html>
 <html lang="fr" dir="ltr">
@@ -55,22 +60,23 @@ $year = date('Y');
         </div>
         <div class="row justify-content-center">
             <form method="POST" action="index.php">
-                <select name="liste_numerique_annee">
+                <select name="monthList" id="monthList">                        
                     <?php
-                    for ($i = 2019; $i >= 2010; $i--) {
-
-                        echo '<option value="' . $i . '">' . $i . '</option>';
+                    foreach ($arrayMonths as $indexDetail => $monthDetail) {
+                        if ($indexDetail != 0) {
+                            ?>
+                            <option value="<?= $indexDetail ?>"><?= $monthDetail ?></option>
+                            <?php
+                        }
                     }
                     ?>
                 </select>
-                <select name="liste_numerique_mois">
-                    <?php
-                    for ($i = 1; $i <= 12; $i++) {
-
-                        echo '<option value="' . $i . '">' . $i . '</option>';
-                    }
-                    ?>
+                <select name="yearList" id="yearList">
+                    <?php for ($y = 2019; $y >= 2010; $y--) { ?>
+                        <option value="<?= $y ?>"> <?= $y ?></option>
+                    <?php } ?>
                 </select>
+                <input class="btn btn-success p-0 mb-5" type="submit" value="Envoyer" />
             </form>
         </div>
         <div class ="row justify-content-center">
